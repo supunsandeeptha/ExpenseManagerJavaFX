@@ -117,6 +117,15 @@ public class EnterIncome {
                 e.printStackTrace();
             }
         }
+
+        //resetting the textfield
+        amount.clear();
+        dateentered.getEditor().clear();
+        enteredby.clear();
+        description.clear();
+        select.getEditor().clear();
+        selectPaymentMode.getEditor().clear();
+
         
     }
 

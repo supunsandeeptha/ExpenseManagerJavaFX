@@ -124,6 +124,13 @@ public class ExpenseEnter {
                 e.printStackTrace();
             }
         }
+
+        //resetting the textfield after filling
+        amount.clear();
+        enteredby.clear();
+        description.clear();
+        dateentered.getEditor().clear();
+        select.getEditor().clear();
     }
 
 
