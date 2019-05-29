@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EnterIncome">
+    <children>
+        <Label layoutX="227.0" layoutY="14.0" text="Enter Income" textAlignment="CENTER" textFill="#0e8d7a">
+            <font>
+                <Font name="System Bold" size="21.0" />
+            </font>
+        </Label>
+        <Label layoutX="56.0" layoutY="80.0" prefHeight="30.0" prefWidth="87.0" text="Income Type" textFill="#591fea" AnchorPane.leftAnchor="56.0">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="56.0" layoutY="167.0" prefHeight="30.0" prefWidth="90.0" text="Amount" textFill="#591fea" AnchorPane.leftAnchor="56.0">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="56.0" layoutY="212.0" prefHeight="30.0" prefWidth="87.0" text="Date Entered" textFill="#591fea" AnchorPane.leftAnchor="56.0">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="56.0" layoutY="262.0" prefHeight="30.0" prefWidth="87.0" text="Entered By" textFill="#591fea" AnchorPane.leftAnchor="56.0">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <ComboBox fx:id="select" layoutX="227.0" layoutY="83.0" prefHeight="25.0" prefWidth="260.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Air Tickets" />
+                    <String fx:value="Visas" />
+                    <String fx:value="Tours" />
+                    <String fx:value="Other" />
+                </FXCollections>
+            </items>
+            <value>
+                <String fx:value="Select Income" />
+            </value>
+        </ComboBox>
+
+
+
+        <TextField fx:id="amount" layoutX="225.0" layoutY="170.0" prefHeight="25.0" prefWidth="260.0" />
+        <TextField fx:id="enteredby" layoutX="225.0" layoutY="264.0" prefHeight="25.0" prefWidth="260.0" />
+        <Button layoutX="233.0" layoutY="353.0" mnemonicParsing="false" onAction="#save" prefHeight="31.0" prefWidth="119.0" text="Submit" textFill="#0e8d7a">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Button>
+        <DatePicker fx:id="dateentered" layoutX="225.0" layoutY="214.0" prefHeight="25.0" prefWidth="260.0" />
+        <Label layoutX="57.0" layoutY="119.0" prefHeight="30.0" prefWidth="87.0" text="Description" textFill="#591fea">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <TextField fx:id="description" layoutX="226.0" layoutY="120.0" prefHeight="25.0" prefWidth="260.0" />
+      <Label layoutX="56.0" layoutY="304.0" prefHeight="30.0" prefWidth="99.0" text="Payment Mode" textFill="#591fea">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+        <ComboBox fx:id="selectPaymentMode" layoutX="227.0" layoutY="309.0" prefHeight="25.0" prefWidth="260.0" >
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Cash" />
+                    <String fx:value="Card" />
+                    <String fx:value="Cheque" />
+                </FXCollections>
+            </items>
+            <value>
+                <String fx:value="Payment Mode"/>
+            </value>
+        </ComboBox>
+    </children>
+</AnchorPane>
