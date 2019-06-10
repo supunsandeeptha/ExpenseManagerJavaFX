@@ -41,7 +41,7 @@ public class ViewRecords {
 
 
     //instance of the Database Connection class
-    DatabaseConnection databaseConnection = new DatabaseConnection();
+   // DatabaseConnection databaseConnection = new DatabaseConnection();
 
     //view expense records method
     public void view(ActionEvent actionEvent) {
@@ -86,7 +86,9 @@ public class ViewRecords {
 
             //date range query
             String query = "SELECT * FROM expenses WHERE dateEntered >= ? AND dateEntered <= ? ";
-            PreparedStatement preparedStatement = databaseConnection.con.prepareStatement(query);
+            //instance of the database connection class
+            DatabaseConnection obj = DatabaseConnection.getInstance();
+            PreparedStatement preparedStatement = obj.getCon().prepareStatement(query);
 
             preparedStatement.setString(1, dateFrom);
             preparedStatement.setString(2, dateTo);
@@ -100,7 +102,7 @@ public class ViewRecords {
             }
 
             //total administration
-            preparedStatement = databaseConnection.con.prepareStatement(administrationQuery);
+            preparedStatement = obj.getCon().prepareStatement(administrationQuery);
             preparedStatement.setString(1, dateFrom);
             preparedStatement.setString(2, dateTo);
             ResultSet rs2 = preparedStatement.executeQuery();
@@ -108,7 +110,7 @@ public class ViewRecords {
             administrativeCost.setText(rs2.getString("amount"));
 
             //total purchases
-            preparedStatement = databaseConnection.con.prepareStatement(purchasingQuery);
+            preparedStatement = obj.getCon().prepareStatement(purchasingQuery);
             preparedStatement.setString(1, dateFrom);
             preparedStatement.setString(2, dateTo);
             rs2 = preparedStatement.executeQuery();
@@ -116,7 +118,7 @@ public class ViewRecords {
             purchasingCost.setText(rs2.getString("amount"));
 
             //total petty cash
-            preparedStatement = databaseConnection.con.prepareStatement(totalPettyCash);
+            preparedStatement = obj.getCon().prepareStatement(totalPettyCash);
             preparedStatement.setString(1, dateFrom);
             preparedStatement.setString(2, dateTo);
             rs2 = preparedStatement.executeQuery();
@@ -124,7 +126,7 @@ public class ViewRecords {
             pettyCashCost.setText(rs2.getString("amount"));
 
             //total other cost
-            preparedStatement = databaseConnection.con.prepareStatement(totalOther);
+            preparedStatement = obj.getCon().prepareStatement(totalOther);
             preparedStatement.setString(1, dateFrom);
             preparedStatement.setString(2, dateTo);
             rs2 = preparedStatement.executeQuery();
@@ -132,7 +134,7 @@ public class ViewRecords {
             otherCost.setText(rs2.getString("amount"));
 
             //total cost
-            preparedStatement = databaseConnection.con.prepareStatement(totalCost);
+            preparedStatement = obj.getCon().prepareStatement(totalCost);
             preparedStatement.setString(1, dateFrom);
             preparedStatement.setString(2, dateTo);
             rs2 = preparedStatement.executeQuery();

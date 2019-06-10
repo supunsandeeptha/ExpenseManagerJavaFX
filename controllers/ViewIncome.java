@@ -41,7 +41,7 @@ public class ViewIncome {
 
 
     //instance of the Database Connection class
-     DatabaseConnection databaseConnection = new DatabaseConnection();
+     //DatabaseConnection databaseConnection = new DatabaseConnection();
 
 
     //view income records method
@@ -87,8 +87,10 @@ public class ViewIncome {
 
 
             //date range query
+            //database connection obj
+            DatabaseConnection obj = DatabaseConnection.getInstance();
             String query = "SELECT * FROM income WHERE dateEntered >= ? AND dateEntered <= ? ";
-            PreparedStatement preparedStatement = databaseConnection.con.prepareStatement(query);
+            PreparedStatement preparedStatement = obj.getCon().prepareStatement(query);
 
             preparedStatement.setString(1, dateFrom);
             preparedStatement.setString(2, dateTo);
@@ -106,7 +108,7 @@ public class ViewIncome {
             }
 
             //total administration
-            preparedStatement = databaseConnection.con.prepareStatement(airTicketQuery);
+            preparedStatement = obj.getCon().prepareStatement(airTicketQuery);
             preparedStatement.setString(1, dateFrom);
             preparedStatement.setString(2, dateTo);
             ResultSet rs2 = preparedStatement.executeQuery();
@@ -114,7 +116,7 @@ public class ViewIncome {
             airTickets.setText(rs2.getString("amount"));
 
             //total purchases
-            preparedStatement = databaseConnection.con.prepareStatement(visaQuery);
+            preparedStatement = obj.getCon().prepareStatement(visaQuery);
             preparedStatement.setString(1, dateFrom);
             preparedStatement.setString(2, dateTo);
             rs2 = preparedStatement.executeQuery();
@@ -122,7 +124,7 @@ public class ViewIncome {
             visas.setText(rs2.getString("amount"));
 
             //total petty cash
-            preparedStatement = databaseConnection.con.prepareStatement(tourQuery);
+            preparedStatement = obj.getCon().prepareStatement(tourQuery);
             preparedStatement.setString(1, dateFrom);
             preparedStatement.setString(2, dateTo);
             rs2 = preparedStatement.executeQuery();
@@ -130,7 +132,7 @@ public class ViewIncome {
             tours.setText(rs2.getString("amount"));
 
             //total other cost
-            preparedStatement = databaseConnection.con.prepareStatement(otherQuery);
+            preparedStatement = obj.getCon().prepareStatement(otherQuery);
             preparedStatement.setString(1, dateFrom);
             preparedStatement.setString(2, dateTo);
             rs2 = preparedStatement.executeQuery();
@@ -138,7 +140,7 @@ public class ViewIncome {
             otherIncome.setText(rs2.getString("amount"));
 
             //total cost
-            preparedStatement = databaseConnection.con.prepareStatement(totalIncomeQuery);
+            preparedStatement = obj.getCon().prepareStatement(totalIncomeQuery);
             preparedStatement.setString(1, dateFrom);
             preparedStatement.setString(2, dateTo);
             rs2 = preparedStatement.executeQuery();

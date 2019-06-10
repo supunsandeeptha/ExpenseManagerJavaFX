@@ -13,6 +13,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.sql.*;
 
@@ -29,7 +30,7 @@ public class Main extends Application {
     public Button button;
 
     //instance of the database connection class
-    DatabaseConnection connection = new DatabaseConnection();
+   // DatabaseConnection connection = new DatabaseConnection();
 
 
     //main method
@@ -61,8 +62,11 @@ public class Main extends Application {
         //query
         String query = "select * from users where username = '" + userName + "'" + "and pass = '" + pass + "'";
 
+
+        //database connection obj
+        DatabaseConnection obj = DatabaseConnection.getInstance();
         try {
-            Statement st = connection.con.createStatement();
+            Statement st = obj.getCon().createStatement();
             //result set
             ResultSet resultSet;
             resultSet = st.executeQuery(query);

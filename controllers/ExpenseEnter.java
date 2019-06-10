@@ -31,7 +31,7 @@ public class ExpenseEnter {
 
 
     //instance of the DatabaseConnection class
-    public DatabaseConnection databaseConnection = new DatabaseConnection();
+   // public DatabaseConnection databaseConnection = new DatabaseConnection();
 
 
     //save method
@@ -95,8 +95,11 @@ public class ExpenseEnter {
             //query
             String query = "insert into expenses(expenseType,expenseDescription,amount,dateEntered,enteredBy) values (?,?,?,?,?)";
             //prepare statement
+
+            //database connection obj
+            DatabaseConnection obj = DatabaseConnection.getInstance();
             try {
-                PreparedStatement preparedStatement = databaseConnection.con.prepareStatement(query);
+                PreparedStatement preparedStatement = obj.getCon().prepareStatement(query);
 
                 preparedStatement.setString(1, expense);
                 preparedStatement.setString(2,DBdescription);

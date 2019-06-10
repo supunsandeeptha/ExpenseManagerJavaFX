@@ -22,7 +22,7 @@ public class EnterIncome {
     public ComboBox selectPaymentMode;
 
     //instance of the database connection class
-    DatabaseConnection databaseConnection = new DatabaseConnection();
+    //DatabaseConnection databaseConnection = new DatabaseConnection();
 
     public void save(ActionEvent actionEvent) {
 
@@ -87,8 +87,10 @@ public class EnterIncome {
             //query
             String query = "insert into income(incomeType,incomeDescription,amount,dateEntered,enteredBy,paymentMode) values (?,?,?,?,?,?)";
             //prepare statement
+
+            DatabaseConnection obj = DatabaseConnection.getInstance();
             try {
-                PreparedStatement preparedStatement = databaseConnection.con.prepareStatement(query);
+                PreparedStatement preparedStatement = obj.getCon().prepareStatement(query);
 
                 preparedStatement.setString(1, income);
                 preparedStatement.setString(2,DBdescription);
